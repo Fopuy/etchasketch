@@ -6,13 +6,18 @@
     border: 2px solid #333;
 }
 
-.grid-square{
+.gridSquare{
     aspect-ratio: 1 / 1;
     box-sizing: border-box;
     border: 1px solid #ddd;
 }
 
-.div-container{
+.divButtons{
+    display: flex;
+    flex-direction: column;
+}
+
+body{
     display: flex;
     justify-content: center;
 }
