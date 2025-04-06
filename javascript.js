@@ -1,4 +1,13 @@
 const container = document.querySelector("#grid-container");
+const btnInput = document.querySelector("#btnInput");
+btnInput.addEventListener("click", selectGridSize);
+let selectedColor = "black";
+document.querySelector("#black").addEventListener("click", () => {
+    selectedColor = "black";
+})
+document.querySelector("#rainbow").addEventListener("click", () => {
+    selectedColor = "rainbow";
+})
 
 function selectGridSize(){
     const gridInput = document.querySelector("#gridInput").value;
@@ -12,21 +21,13 @@ function selectGridSize(){
         square.classList.add("gridSquare");
         square.style.flex = `0 0 calc(100%/${gridInput})`;
         container.appendChild(square);
-
-        const hoverSquares = document.querySelectorAll(".gridSquare");
-        hoverSquares.forEach(square => {
-        square.addEventListener("mouseover", hoverRainbow)
-})
-}}
-
-const btnInput = document.querySelector("#btnInput");
-btnInput.addEventListener("click", selectGridSize);
-
-function hoverBlack(e){
-    e.target.style.backgroundColor = "black";
 }
+    const hoverSquares = document.querySelectorAll(".gridSquare");
+    hoverSquares.forEach(square => {
+    square.addEventListener("mouseover", colorOption)
+    })}
 
-function getRainbow(e){
+function getRainbow(){
     const letters = '01234567890ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++){
@@ -35,7 +36,12 @@ function getRainbow(e){
     return color;
 }
 
-function hoverRainbow(e){
-    e.target.style.backgroundColor = getRainbow();
+function colorOption(e){
+    if (selectedColor === "black"){
+        e.target.style.backgroundColor = "black";
+    }else{
+    if (selectedColor === "rainbow"){
+        e.target.style.backgroundColor = getRainbow();
+    }}
 }
 
